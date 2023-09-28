@@ -1,17 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const movieRoutes = require('./routes/movie-routes');
+
+const productRoutes = require('./routes/product-routes');
+const imagesRoutes = require('./routes/image-routes');
+
 
 const PORT = 3000;
-//const URL = 'mongodb://localhost:27017/moviebox';
-
-// const URL = 'mongodb+srv://romanenkoisnot:kkF2riLPJNQPDkXY@clustermovies0.fopk0ip.mongodb.net/moviebox';
 const URL = 'mongodb+srv://romanenkoisnot:R6e5lGLZZ4hsrBQI@cluster0.hgrf5nc.mongodb.net/altShopDB'
 
 
 const app = express();
 app.use(express.json());
-app.use(movieRoutes);
+app.use(productRoutes);
+app.use(imagesRoutes);
 
 mongoose
     .connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})
