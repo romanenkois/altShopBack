@@ -18,7 +18,6 @@ const productSchema = new Schema({
     description: String,
     image: String,
     sizeAndQuantity: {
-        xs : Number,
         s : Number,
         m : Number,
         l : Number,
@@ -26,7 +25,7 @@ const productSchema = new Schema({
         xxl : Number,
         xxxl : Number,
         universal : Number
-    },
+    }
 });
 
 const Product = mongoose.model('Product', productSchema);
