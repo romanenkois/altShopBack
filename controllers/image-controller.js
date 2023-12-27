@@ -7,12 +7,13 @@ const handleError = (res, error) => {
 const getImages = (req, res) => {
     Image
     .find()
+    .sort({ name: 1 })
     .then((images) => {
         res
             .status(200)
             .json(images);
     })
-    .catch((err) => handleError(res, err));
+    .catch((err) => {console.log(err)});
 }
 
 const getImage = (req, res) => {
@@ -22,6 +23,17 @@ const getImage = (req, res) => {
         res
             .status(200)
             .json(image);
+    })
+    .catch((err) => handleError(res, err));
+}
+
+const getImageRaw = (req, res) => {
+    Image
+    .findById(req.params.id)
+    .then((image) => {
+        res
+            .status(200)
+            .send(image.image);
     })
     .catch((err) => handleError(res, err));
 }
@@ -63,6 +75,7 @@ const updateImage = (req, res) => {
 module.exports = {
     getImages,
     getImage,
+    getImageRaw,
     deleteImage,
     addImage,
     updateImage
